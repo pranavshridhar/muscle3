@@ -175,7 +175,7 @@ endif
 
 $(objdir)/%.d: %.cpp $(srcdir)/version.h
 	@mkdir -p $(@D)
-	$(CONDITIONAL_CC) $(CPPFLAGS) -E -MM -MT $(@:.d=.o) $< -o $@
+	$(CONDITIONAL_CC) $(CPPFLAGS) $(DEP_FLAGS) -E -MM -MT $(@:.d=.o) $< -o $@
 
 $(objdir)/%.o: %.cpp $(srcdir)/version.h
 	@mkdir -p $(@D)
