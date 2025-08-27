@@ -193,7 +193,7 @@ endif
 
 # Check for valgrind (for testing for memory leaks)
 $(info )
-$(info Looking for valgrind...)
+$(info Looking for a leak detection tool...)
 tool_var := VALGRIND
 include $(TOOLDIR)/check_override.make
 
@@ -202,6 +202,10 @@ include $(TOOLDIR)/detect_tool.make
 
 ifeq ($(VALGRIND), valgrind)
     export VALGRIND := valgrind --leak-check=full --error-exitcode=1
+endif
+
+ifdef MUSCLE_MACOS
+    export VALGRIND := leaks -atExit --
 endif
 
 ifndef VALGRIND
