@@ -206,6 +206,7 @@ endif
 
 ifdef MUSCLE_MACOS
     export LEAK_DETECTOR := leaks -atExit --
+    export MallocStackLogging = 1
 endif
 
 ifndef LEAK_DETECTOR
